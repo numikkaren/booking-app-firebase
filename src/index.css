@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, #root {
+body, #root, .app-container {
   margin: 0; 
   padding: 0;   
   height: 100vh;
@@ -72,14 +72,23 @@ body {
 
 main {
   flex: 1;
-  max-width: 1200px; 
+  max-width: 100%; 
+  justify-content: center;
+}
+
+.container{
+  width: 100%;
   margin-top:60px;
   padding: 20px;
   box-sizing: border-box;
-  min-height: calc(100vh - 120px); 
+  min-height: calc(100vh - 120px);
+  border: #213547 solid 1px; 
+
 }
 
 .footer{
+  display: flex;
+  flex-direction: column;
   border: #213547 solid 1px;
   background-color:#393026;
   width: 100%;
@@ -90,11 +99,9 @@ main {
 .footer .footer-content{
   color: white;
   text-align: center;
+  width: 100%;
 }
 
-.form-container{
-  color:blue;
-}
 
 h1 {
   font-size: 3em;
@@ -117,7 +124,7 @@ p {
   background-color: white;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 40%;
   margin: 40px auto;
   text-align: left;
   border-radius: 5px;

@@ -8,7 +8,10 @@ function Header() {
             <a href="/" class="nav-link">Home</a>
         </li>
         <li className="nav-item">
-            <a href="/owner-login" class="nav-link">Owner Login</a>
+            <a href="/sign-up" class="nav-link">Sign up</a>
+        </li>
+        <li className="nav-item">
+            <a href="/login" class="nav-link">Login</a>
         </li>
       </ul>
     </nav>

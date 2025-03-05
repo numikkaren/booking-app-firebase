@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "./firebase"; // Import Firestore configuration
+import { db } from "../firebase.js"; // Import Firestore configuration
 import { collection, addDoc } from "firebase/firestore"; // Import Firestore methods
 
 function AddEquipmentForm() {

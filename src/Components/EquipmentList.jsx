@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { db } from "./firebase"; // Import Firestore configuration
+import { db } from "../firebase"; // Import Firestore configuration
 import { collection, getDocs } from "firebase/firestore"; // Import Firestore and read data
-import Equipment from "./Equipment";
+import Equipment from "./Equipment.jsx";
 
 function EquipmentList() {
   const [equipmentList, setEquipmentList] = useState([]); // State to store equipment data

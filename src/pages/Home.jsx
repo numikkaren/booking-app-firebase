@@ -1,5 +1,5 @@
 import React from "react";
-import EquipmentList from "../EquipmentList";
+import EquipmentList from "../Components/EquipmentList.jsx";
 
 function Home() {
   return (
