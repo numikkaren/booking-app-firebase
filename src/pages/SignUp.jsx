@@ -11,7 +11,9 @@ function SignUp(){
     // for navigation after sign up 
     const navigate = useNavigate();
 
-    async function handleSignup(){
+    async function handleSignup(event){
+
+        event.preventDefault();
 
         if(password !== confirmPassword){
             setMessage("Passwords do not match!Please try again.");
@@ -20,7 +22,7 @@ function SignUp(){
             try{
                 await registerWithEmail(email,password);
                 setMessage("Registered Successful!");
-                navigate("/");          //redirecting to login page 
+                navigate("/login");                             //redirecting to login page 
             }catch(error){
                 setMessage(error.message);
             }
@@ -28,10 +30,22 @@ function SignUp(){
 
     }
     return(
-       <div>
-            <h2>Sign Up</h2>
-            <form className="form-container">
-            <input type="email" placeholder="Email"  ></input>
+       <div className="signup-container">
+            <h1>Sign Up</h1>
+            <form className="form-container" onSubmit={handleSignup}>
+                <label>Email</label>
+                <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} ></input>
+                <label>Password</label>
+                <input type="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={ e => setPassword(e.target.value)}
+                    autoComplete="new-password" >
+                </input>
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={ e => setConfirmPassword(e.target.value)}></input>
+                <button className="button-submit" type="submit">Sign Up</button>
+                <p>{message}</p>
             </form>
        </div> 
     );

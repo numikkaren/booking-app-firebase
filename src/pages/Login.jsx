@@ -24,10 +24,17 @@ function Login(){
     <div>
       <h1>Login</h1>
       <form className="form-container" onSubmit={handleLogin}>
-      <input  type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}></input>
-      <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}></input>
-      <button className="button-submit" type="submit">Login</button>
-      <p>{message}</p>
+        <label>Email</label> 
+        <input  type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}></input>
+        <label>Password</label>
+        <input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={e => setPassword(e.target.value)} autoComplete="new-password" >
+        </input>
+        <button className="button-submit" type="submit">Login</button>
+        <p>{message}</p>
       </form>
     </div>
   );
