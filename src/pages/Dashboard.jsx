@@ -1,10 +1,12 @@
+// added user
+
 import React, {useState} from "react";
 import AddEquipmentForm from "../Components/AddEquipmentForm.jsx";
 import EquipmentList from "../Components/EquipmentList.jsx";
 import { logout } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 
-function Dashboard() {
+function Dashboard( {user} ) {
  
     const navigate = useNavigate();
 
@@ -20,11 +22,11 @@ function Dashboard() {
             Logout
         </button>
       <p>Upload your equipment details here:</p>
-      <AddEquipmentForm />
-      <EquipmentList />
+      <AddEquipmentForm user ={user} />
+      <EquipmentList user = {user} />    
     </div>
   );
 }
 
-export default Dashboard; // Default export
+export default Dashboard; // Default export     
 

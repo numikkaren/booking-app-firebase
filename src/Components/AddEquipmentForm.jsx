@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db } from "../firebase.js"; // Import Firestore configuration
 import { collection, addDoc } from "firebase/firestore"; // Import Firestore methods
 
-function AddEquipmentForm() {
+function AddEquipmentForm({user}) {
   // state objects for form inputs
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -29,7 +29,13 @@ function AddEquipmentForm() {
   // Handle form submission
   async function handleSubmit(event) {
     event.preventDefault(); // Prevent form from refreshing the page
-    const newEquipment = { name, description, availability, image }; // Combine form data
+    const newEquipment = { 
+      name,
+      description, 
+      availability, 
+      image,
+      ownerId: user.uid
+     }; // Combine form data
     try {
       await addDoc(collection(db, "equipment"), newEquipment); // Save data to Firestore
       alert("Equipment has been added successfully!");
