@@ -119,6 +119,37 @@ p {
   color:#393026;
 }
 
+.home-wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-left{
+  flex: 2;
+  min-width: 60%
+
+}
+
+.home-right{
+  flex: 1;
+  min-width: 30%;
+  border: 1px solid black;
+}
+
+@media (max-width: 768px) {
+
+  .home-wrapper{
+    flex-direction: column;
+  }
+  
+  .home-right{
+    display: none;
+  }
+}
 
 .signup-container {
   display: flex;
