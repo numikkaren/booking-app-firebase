@@ -12,7 +12,6 @@ function Home({user}) {
         <EquipmentList user = {user} />
       </div>
       <div className="home-right">
-        <h2>Map Placeholder</h2>
         <Map/>
       </div>    
     </div>
