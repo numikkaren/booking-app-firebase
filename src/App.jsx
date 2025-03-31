@@ -9,6 +9,7 @@ import { auth } from "./firebase.js";
 import AppRoutes from "./Routes.jsx"; 
 import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
 
@@ -29,15 +30,17 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-    <Header />
-    <main>
-      <div className="container">
-    <AppRoutes user={user} />
-      </div>
-    </main>
-    <Footer />
+    <Router>
+     <div className="app-container">
+       <Header />
+        <main>
+          <div className="container">
+             <AppRoutes user={user} />
+           </div>
+        </main>
+       <Footer />
     </div>
+    </Router>
   );
 }
 
