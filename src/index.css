@@ -38,10 +38,22 @@ body, #root, .app-container {
   font-weight: bold;
 }
 
+.nav-left{
+  display: flex;
+  align-items: center;
+}
+
 .nav-center {
   flex: 1;
   display: flex;
   justify-content: center;
+}
+
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap:10px;
+  padding-right: 40px;
 }
 
 .search-bar {
@@ -70,23 +82,83 @@ body, #root, .app-container {
   font-size: 12px;
 }
 
+.profile-menu{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 12px;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.1);  
+  background-color: white;
+  cursor: pointer;
+}
+
+.user-icon{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.nav-list{
+  /* display: none; */
+  position: absolute;
+  top: 100%;
+  right:0px;
+  width: 180px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 10px 0;
+  box-shadow:0 4px 12px rgba(0, 0, 0, 0.1); 
+  background-color: white;
+  list-style: none;
+  z-index: 1000;
+
+   /* Slide and fade effect */
+   opacity: 0;
+   transform: translateY(-10px);
+   pointer-events: none;
+   transition:all 1s ease-in-out ;
+}
+  /* Slide and fade effect */
+.nav-list.open{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-list li{
+  margin: 5px 0;
+  width: 100%;
+}
+
+/* .nav-list li .nav-link {
+  color: black;
+  text-decoration: none;
+}  */
+
+ /* .profile-menu:hover .nav-list {
+  display: block;
+}  */
+
 .nav-link{
+  display: block;
+  box-sizing: border-box;    
+  width: 100%;
   color:black;
   text-decoration: none;
-  list-style-type: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 5px 10px;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 20px;
   transition: background-color 0.3s;
 }
 
-.nav-link:hover{
-  background-color: #A7C4B5;
-  color: white;
-}
 
-.nav-link.active{
-  background-color: #747bff;
+.nav-link:hover,
+.nav-link:focus{
+  background-color: #ddd;
   color: white;
 }
 
@@ -109,8 +181,6 @@ main {
   padding: 20px;
   box-sizing: border-box;
   min-height: calc(100vh - 120px);
-  border: blue solid 1px; 
-
 }
 
 .footer{
@@ -163,7 +233,6 @@ p {
 .home-right{
   flex: 1;
   min-width: 30%;
-  border: 1px solid red;
 }
 
 @media (max-width: 768px) {

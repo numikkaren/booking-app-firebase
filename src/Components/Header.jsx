@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import userIcon from "../assets/User-icon.png";
 
 function Header() {
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  function toggleMenu(){
+
+    setMenuOpen( (prev) => !prev);
+  }
 
   return (
     <nav className="nav-bar">
@@ -25,21 +32,24 @@ function Header() {
 
       {/* Right: Profile Menu */}
       <div className="nav-right">
-        <div className="profile-menu">
+        <div className="profile-menu" onClick={toggleMenu}>
           <span className="menu-icon">☰</span>
+          <div className="divider"></div>
           <img
-            src="https://i.pravatar.cc/30"
+            src={userIcon}
             alt="user"
             className="user-icon"
           />
-        </div>
-
       {/* Drop Down Menu */}
-      <ul className="nav-list">
-        <li><Link to="/" className="nav-link">Home</Link></li>
-        <li><Link to="/sign-up" className="nav-link">Sign up</Link></li>
-        <li><Link to="/login" className="nav-link">Login</Link></li>
-      </ul>
+      {menuOpen && (
+          // <ul className="nav-list">
+          <ul className={`nav-list ${menuOpen ? "open" : ""}`}>
+            <li><Link to="/" className="nav-link">Home</Link></li>
+             <li><Link to="/sign-up" className="nav-link">Sign up</Link></li>
+            <li><Link to="/login" className="nav-link">Login</Link></li>
+           </ul>
+        )}
+        </div>
       </div>
     </nav>
   );
