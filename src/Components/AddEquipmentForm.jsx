@@ -9,9 +9,8 @@ function AddEquipmentForm({user}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [availability, setAvailability] = useState(true);
-  // add image 
-  //const [image, setImage] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [address, setAddress] = useState("");
 
   function nameChange(event) {
     setName(event.target.value); // Update name state
@@ -25,12 +24,12 @@ function AddEquipmentForm({user}) {
     setAvailability(event.target.checked); // Update availability state
   }
 
-  // function imageChange(event){
-  //   setImage(event.target.value);
-  // }
-
   function imageChange (event) {
-      setImageFile(event.target.files[0]);     // store the file object
+    setImageFile(event.target.files[0]);     // store the file object
+  }
+
+  function addressChange (event) {
+    setAddress(event.target.value);
   }
 
   // Handle form submission
@@ -51,6 +50,7 @@ function AddEquipmentForm({user}) {
       availability, 
       image: imageURL,                   
       ownerId: user.uid,
+      address,
       createdAt: new Date().toISOString()
       
      }; // Combine form data
@@ -60,6 +60,7 @@ function AddEquipmentForm({user}) {
       // Reset form fields
       setName("");
       setDescription("");
+      setAddress("");
       setAvailability(true);
       setImageFile(null);
     } catch (error) {
@@ -73,55 +74,44 @@ function AddEquipmentForm({user}) {
       <div className="form-label">
       <label>
         Name:
-        <input
-          type="text"
-          value={name}
-          onChange={nameChange}
-          required
+        <input type="text" value={name} onChange={nameChange} required
         />
       </label>
       </div>
       <div className="form-label">
       <label>
         Description:
-        <input
-          type="text"
-          value={description}
-          onChange={descriptionChange}
-          required
+        <input type="text" value={description} onChange={descriptionChange} required
         />
       </label>
       </div>
+
+      <div className="form-label">
+      <label>
+        Location:
+        <input type="text" value={address} onChange={addressChange} required
+        />
+      </label>
+      </div>
+
       <div className="form-label">
       <label>
         Availability:
-        <input
-          type="checkbox"
-          checked={availability} 
-          onChange={availabilityChange}
+        <input type="checkbox" checked={availability} onChange={availabilityChange}
         />
       </label>
       </div>
+      
+      <div className="form-label">
+      <label htmlFor="imageUpload">Upload Image:   
+      </label>
+      <input type="file" id="imageUpload"  accept="image/*" style={{ display: "none" }}  onChange={imageChange}  
+      />
+      <label htmlFor="imageUpload" className="button-submit">Upload Photo
+      </label>
 
-
-  <div className="form-label">
-  <label htmlFor="imageUpload">Upload Image:</label>
-
-  <input
-    type="file"   // file Picker  
-    id="imageUpload"
-    accept="image/*"
-    style={{ display: "none" }}    // hide default style
-    onChange={imageChange}
-  />
-
-  <label htmlFor="imageUpload" className="button-submit">
-    Upload Photo
-  </label>
-
-  {imageFile && <p>Selected: {imageFile.name}</p>}
-</div>
-
+      {imageFile && <p>Selected: {imageFile.name}</p>}
+      </div>
 
       <button className="button-submit" type="submit">Add Equipment</button>
     </form>
